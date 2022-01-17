@@ -49,16 +49,31 @@ public class UI {
 		for(int i=0; i<pecas.length; i++) {
 			System.out.print((8-i) + " ");
 			for(int j=0;j<pecas.length; j++) {
-				imprimePeca(pecas[i][j]);
+				imprimePeca(pecas[i][j], false);
 			}
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
 	}
 	
-	private static void imprimePeca(PecaDeXadrez peca) {
+	public static void imprimeTabuleiro(PecaDeXadrez[][] pecas, boolean[][] movimentosPossiveis) {
+		for(int i=0; i<pecas.length; i++) {
+			System.out.print((8-i) + " ");
+			for(int j=0;j<pecas.length; j++) {
+				imprimePeca(pecas[i][j], movimentosPossiveis[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+	}
+	
+	
+	private static void imprimePeca(PecaDeXadrez peca, boolean fundo) {
+		if(fundo) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
 		if (peca == null) {
-            System.out.print("-");
+            System.out.print("-" + ANSI_RESET);
         }
         else {
             if (peca.getColor() == Color.WHITE) {
