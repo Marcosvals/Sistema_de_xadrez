@@ -31,7 +31,7 @@ public class PosicionamentoXadrez {
 	}
 	
 	protected static PosicionamentoXadrez aPartirDoPosicionamento(Posicionamento posicionamento) {
-		return new PosicionamentoXadrez((char)('a' - posicionamento.getColuna()), 8 - posicionamento.getLinha());
+		return new PosicionamentoXadrez((char)('a' + posicionamento.getColuna()), 8 - posicionamento.getLinha());
 	}
 	
 	@Override
