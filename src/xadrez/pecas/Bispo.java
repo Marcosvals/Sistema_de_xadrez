@@ -27,7 +27,7 @@ public class Bispo extends PecaDeXadrez {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValues(p.getLinha() - 1, p.getColuna() - 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -37,7 +37,7 @@ public class Bispo extends PecaDeXadrez {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValues(p.getLinha() - 1, p.getColuna() + 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -47,7 +47,7 @@ public class Bispo extends PecaDeXadrez {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValues(p.getLinha() + 1 , p.getColuna() + 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -57,7 +57,7 @@ public class Bispo extends PecaDeXadrez {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValues(p.getLinha() + 1, p.getColuna() - 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		

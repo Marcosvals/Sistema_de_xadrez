@@ -28,7 +28,7 @@ public class Torre extends PecaDeXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setLinha(p.getLinha()-1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -38,7 +38,7 @@ public class Torre extends PecaDeXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setColuna(p.getColuna() - 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -48,7 +48,7 @@ public class Torre extends PecaDeXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setColuna(p.getColuna() + 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -58,7 +58,7 @@ public class Torre extends PecaDeXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setLinha(p.getLinha() + 1);
 		}
-		if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+		if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		

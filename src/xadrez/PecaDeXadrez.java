@@ -34,7 +34,7 @@ public abstract class PecaDeXadrez extends Peca {
 		return PosicionamentoXadrez.aPartirDoPosicionamento(posicionamento);
 	}
 	
-	protected boolean ExistePecaAdversaria(Posicionamento posicionamento) {
+	protected boolean existePecaAdversaria(Posicionamento posicionamento) {
 		PecaDeXadrez p = (PecaDeXadrez)getTabuleiro().peca(posicionamento);
 		return p != null && p.getColor() != color;
 	}

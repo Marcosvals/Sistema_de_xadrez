@@ -3,13 +3,16 @@ package xadrez.pecas;
 import tabuleiro.Posicionamento;
 import tabuleiro.Tabuleiro;
 import xadrez.Color;
+import xadrez.PartidaDeXadrez;
 import xadrez.PecaDeXadrez;
 
 public class Peao extends PecaDeXadrez {
+	
+	private PartidaDeXadrez partidaXadrez;
 
-	public Peao(Tabuleiro tabuleiro, Color color) {
+	public Peao(Tabuleiro tabuleiro, Color color, PartidaDeXadrez partidaXadrez) {
 		super(tabuleiro, color);
-		
+		this.partidaXadrez = partidaXadrez;
 	}
 	
 	@Override
@@ -29,13 +32,27 @@ public class Peao extends PecaDeXadrez {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			p.setValues(posicionamento.getLinha() - 1, posicionamento.getColuna() - 1);
-			if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+			if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			p.setValues(posicionamento.getLinha() - 1, posicionamento.getColuna() + 1);
-			if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+			if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
+			
+			//Movimento Especial en passant brancas
+			if(posicionamento.getLinha() == 3) {
+				Posicionamento esquerda = new Posicionamento(posicionamento.getLinha(), posicionamento.getColuna() - 1);
+				if(getTabuleiro().posicionamentoExiste(esquerda) && existePecaAdversaria(esquerda) && getTabuleiro().peca(esquerda) == partidaXadrez.getEnPassantVulneravel()) {
+					mat[esquerda.getLinha()- 1][esquerda.getColuna()] = true;
+				}
+				Posicionamento direita = new Posicionamento(posicionamento.getLinha(), posicionamento.getColuna() + 1);
+				if(getTabuleiro().posicionamentoExiste(direita) && existePecaAdversaria(direita) && getTabuleiro().peca(direita) == partidaXadrez.getEnPassantVulneravel()) {
+					mat[direita.getLinha()- 1][direita.getColuna()] = true;
+				}
+				
+			}
+			
 		}
 		else {
 			p.setValues(posicionamento.getLinha() + 1, posicionamento.getColuna());
@@ -48,12 +65,25 @@ public class Peao extends PecaDeXadrez {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			p.setValues(posicionamento.getLinha() + 1, posicionamento.getColuna() - 1);
-			if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+			if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			p.setValues(posicionamento.getLinha() + 1, posicionamento.getColuna() + 1);
-			if(getTabuleiro().posicionamentoExiste(p) && ExistePecaAdversaria(p)) {
+			if(getTabuleiro().posicionamentoExiste(p) && existePecaAdversaria(p)) {
 				mat[p.getLinha()][p.getColuna()] = true;
+			}
+			
+			// Movimento especial en passant pretas
+			if(posicionamento.getLinha() == 4) {
+				Posicionamento esquerda = new Posicionamento(posicionamento.getLinha(), posicionamento.getColuna() - 1);
+				if(getTabuleiro().posicionamentoExiste(esquerda) && existePecaAdversaria(esquerda) && getTabuleiro().peca(esquerda) == partidaXadrez.getEnPassantVulneravel()) {
+					mat[esquerda.getLinha() + 1][esquerda.getColuna()] = true;
+				}
+				Posicionamento direita = new Posicionamento(posicionamento.getLinha(), posicionamento.getColuna() + 1);
+				if(getTabuleiro().posicionamentoExiste(direita) && existePecaAdversaria(direita) && getTabuleiro().peca(direita) == partidaXadrez.getEnPassantVulneravel()) {
+					mat[direita.getLinha() + 1][direita.getColuna()] = true;
+				}
+				
 			}
 		}
 		
