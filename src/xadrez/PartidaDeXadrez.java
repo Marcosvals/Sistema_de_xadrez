@@ -132,6 +132,22 @@ public class PartidaDeXadrez {
 			torre.aumentarContagemMovimento();
 		}
 		
+		//Movimento Especial en passant
+		if(p instanceof Peao) {
+			if(origem.getColuna() != destino.getColuna() && capturadaPeca == null) {
+				Posicionamento posicaoPeao;
+				if(p.getColor() == Color.WHITE) {
+					posicaoPeao = new Posicionamento(destino.getLinha() + 1, destino.getColuna());
+				}
+				else {
+					posicaoPeao = new Posicionamento(destino.getLinha() - 1, destino.getColuna());
+				}
+				capturadaPeca = tabuleiro.removerPeca(posicaoPeao);
+				pecaCapturada.add(capturadaPeca);
+				pecaNoTabuleiro.remove(capturadaPeca);
+			}
+		}
+		
 		return capturadaPeca;
 	}
 	
@@ -162,6 +178,21 @@ public class PartidaDeXadrez {
 			PecaDeXadrez torre = (PecaDeXadrez)tabuleiro.removerPeca(destinoT);
 			tabuleiro.colocarPeca(torre, origemT);
 			torre.diminuirContagemMovimento();
+		}
+		
+		//Movimento Especial en passant
+		if(p instanceof Peao) {
+			if(origem.getColuna() != destino.getColuna() && pecaCapturada2 == enPassantVulneravel) {
+				PecaDeXadrez peao = (PecaDeXadrez)tabuleiro.removerPeca(destino);
+				Posicionamento posicaoPeao;
+				if(p.getColor() == Color.WHITE) {
+					posicaoPeao = new Posicionamento(3, destino.getColuna());
+				}
+				else {
+					posicaoPeao = new Posicionamento(4, destino.getColuna());
+				}
+				tabuleiro.colocarPeca(peao, posicaoPeao);
+			}
 		}
 		
 	}
